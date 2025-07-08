@@ -1,19 +1,23 @@
 
+---
+
+### ✅ **Final `README.md`**
+
 ````markdown
 # ⚡ Real-Time Matching Engine with Flask + Socket.IO + ngrok
 
-A high-performance order matching engine built with Python, Flask, and Flask-SocketIO, supporting limit, market, IOC, FOK, and stop orders. Designed to simulate a trading exchange with real-time WebSocket updates and RESTful APIs.
+A high-performance order matching engine built with Python, Flask, and Flask-SocketIO, supporting Limit, Market, IOC, FOK, and Stop orders. It simulates a trading exchange with real-time order matching and WebSocket updates.
 
 ---
 
 ## 🚀 Features
 
-- 📈 Limit / Market / IOC / FOK / Stop order support
+- 📌 Supports **Limit**, **Market**, **IOC**, **FOK**, and **Stop** orders
 - ⚖️ Price-time priority matching
-- 🧠 Order book per symbol with depth view
-- 🧮 Maker/Taker fee calculation
+- 📊 Order book per symbol with depth view
+- 💰 Maker/Taker fee calculation
 - 🔄 Real-time trade execution via WebSocket
-- 💾 Persistent state save/load (optional)
+- 💾 Optional persistent state save/load
 - 🌐 Optional public exposure via ngrok
 
 ---
@@ -26,7 +30,7 @@ A high-performance order matching engine built with Python, Flask, and Flask-Soc
 - pyngrok
 - sortedcontainers
 
-Install dependencies:
+Install dependencies using:
 
 ```bash
 pip install flask flask-socketio pyngrok sortedcontainers
@@ -36,19 +40,19 @@ pip install flask flask-socketio pyngrok sortedcontainers
 
 ## 🛠️ How to Run
 
-### ▶️ Step 1: Start the Server
+### Step 1: Start the Server
 
 ```bash
 python your_script_name.py
 ```
 
-You’ll see something like:
+Output:
 
 ```
 Running on http://127.0.0.1:5000
 ```
 
-Optional (for external access): enable ngrok by uncommenting this section:
+To expose publicly via ngrok, **uncomment** the following lines:
 
 ```python
 from pyngrok import ngrok
@@ -60,13 +64,9 @@ print(f" * Public URL: {public_url}")
 
 ## 📤 Submit an Order
 
-### REST Endpoint
+### POST `/order`
 
-```bash
-POST /order
-```
-
-### Sample cURL:
+Sample request:
 
 ```bash
 curl -X POST http://127.0.0.1:5000/order \
@@ -80,7 +80,7 @@ curl -X POST http://127.0.0.1:5000/order \
 }'
 ```
 
-### Response:
+Sample response:
 
 ```json
 {
@@ -94,9 +94,7 @@ curl -X POST http://127.0.0.1:5000/order \
 
 ## 📊 View Order Book
 
-```bash
-GET /orderbook/<symbol>
-```
+### GET `/orderbook/<symbol>`
 
 Example:
 
@@ -117,12 +115,15 @@ Response:
 
 ---
 
-## 🔔 Real-Time WebSocket Events
+## 📡 WebSocket Usage
 
-WebSocket Events:
+Events:
 
-* `trade_execution`: Emits whenever a trade is matched
-* `orderbook_update`: Emits on `subscribe_orderbook` event
+* `subscribe_orderbook` → Subscribes to live updates for a symbol
+* `orderbook_update` → Receives order book changes
+* `trade_execution` → Receives executed trade details
+
+Example (JavaScript):
 
 ```javascript
 const socket = io("http://127.0.0.1:5000");
@@ -132,7 +133,7 @@ socket.on("connect", () => {
 });
 
 socket.on("orderbook_update", (data) => {
-  console.log("Orderbook:", data);
+  console.log("Orderbook update:", data);
 });
 
 socket.on("trade_execution", (trade) => {
@@ -142,46 +143,48 @@ socket.on("trade_execution", (trade) => {
 
 ---
 
-## 📂 File Structure
+## 🧾 File Structure
 
 ```
 .
-├── matching_engine.py   # Main file
-├── orderbook_state.json # (Optional) Saved orderbook state
-├── matching_engine.log  # Trade logs
+├── matching_engine.py         # Main server file
+├── orderbook_state.json       # (Optional) Saved orderbook state
+├── matching_engine.log        # Log of trades
 └── README.md
 ```
 
 ---
 
-## ✅ What to Do After Running the `.py` File
+## ✅ After Running the Python File
 
-1. **Run `python matching_engine.py`** to start the server.
-2. **Open terminal or Postman** and place orders via the `/order` endpoint.
-3. **View orderbook** with `/orderbook/<symbol>` (e.g., BTCUSD).
-4. (Optional) **Connect via frontend or WebSocket client** to receive real-time events.
-5. (Optional) **Use `ngrok`** to share server via a public URL.
+1. **Start server**: `python matching_engine.py`
+2. **Place orders**: via `curl`, Postman, or custom frontend
+3. **Track state**: use `/orderbook/<symbol>` and WebSocket
+4. (Optional) **Enable ngrok** for public access
+5. (Optional) **Build frontend UI** to visualize the book and trades
 
 ---
 
-## 🧠 Future Improvements
+## 🧠 Future Enhancements
 
-* Add market order support
-* Improve persistence (load from `orderbook_state.json`)
-* Add cancellation/modification APIs
-* Web UI dashboard
-* Unit tests & benchmarking
+* ❌ Order cancelation/modification support
+* 📉 Historical charting
+* 🌍 REST + WebSocket API docs (Swagger/OpenAPI)
+* 📈 Web-based live dashboard
+* 📦 Docker support
+
+---
+
+## 🧑‍💻 Author
+
+**Kunal Kumar**
+📧 [iknir1234@gmail.com](mailto:iknir1234@gmail.com)
+🌐 [github.com/iknir1234](https://github.com/iknir1234)
 
 ---
 
 ## 📃 License
 
 MIT License
-
----
-
-## ✨ Author
-
-Kunal Kumar | [GitHub](https://github.com/kunal14901)
 
 ```
