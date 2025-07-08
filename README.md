@@ -28,6 +28,7 @@ Install dependencies using:
 
 ```bash
 pip install flask flask-socketio pyngrok sortedcontainers
+```
 
 ---
 
