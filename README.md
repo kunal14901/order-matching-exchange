@@ -1,25 +1,22 @@
+# Real-Time Matching Engine with Flask + Socket.IO + ngrok
 
-
-```markdown
-# ⚡ Real-Time Matching Engine with Flask + Socket.IO + ngrok
-
-A high-performance order matching engine built with Python, Flask, and Flask-SocketIO, supporting Limit, Market, IOC, FOK, and Stop orders. It simulates a trading exchange with real-time order matching and WebSocket updates.
+A high-performance order matching engine built with Python, Flask, and Flask-SocketIO, supporting Limit, Market, IOC, FOK, and Stop orders.
 
 ---
 
-## 🚀 Features
+## Features
 
-- 📌 Supports **Limit**, **Market**, **IOC**, **FOK**, and **Stop** orders
-- ⚖️ Price-time priority matching
-- 📊 Order book per symbol with depth view
-- 💰 Maker/Taker fee calculation
-- 🔄 Real-time trade execution via WebSocket
-- 💾 Optional persistent state save/load
-- 🌐 Optional public exposure via ngrok
+- Supports **Limit**, **Market**, **IOC**, **FOK**, and **Stop** orders
+- Price-time priority matching
+- Order book per symbol with depth view
+- Maker/Taker fee calculation
+- Real-time trade execution via WebSocket
+- Optional persistent state save/load
+- Optional public exposure via ngrok
 
 ---
 
-## 📦 Requirements
+## Requirements
 
 - Python 3.8+
 - Flask
@@ -31,7 +28,6 @@ Install dependencies using:
 
 ```bash
 pip install flask flask-socketio pyngrok sortedcontainers
-```
 
 ---
 
